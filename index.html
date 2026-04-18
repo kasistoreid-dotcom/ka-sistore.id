@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Up Game Murah</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background: #1e293b;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container {
+    padding: 20px;
+}
+
+.game-title {
+    margin-top: 30px;
+    font-size: 22px;
+    border-left: 5px solid #38bdf8;
+    padding-left: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    background: #38bdf8;
+    color: black;
+}
+
+.selected {
+    background: #22c55e !important;
+    color: black;
+}
+
+.order-box {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #020617;
+    padding: 15px;
+    text-align: center;
+}
+
+button {
+    background: #25D366;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<header>TOP UP GAME MURAH</header>
+
+<div class="container">
+
+<div class="game-title">MLBB</div>
+<div class="grid" id="mlbb"></div>
+
+<div class="game-title">FREE FIRE</div>
+<div class="grid" id="ff"></div>
+
+<div class="game-title">PUBG</div>
+<div class="grid" id="pubg"></div>
+
+</div>
+
+<div class="order-box">
+    <div id="selectedItem">Pilih diamond dulu</div>
+    <br>
+    <button onclick="orderWA()">Order via WhatsApp</button>
+</div>
+
+<script>
+const data = {
+mlbb: [
+["5 Diamond",1550],["12 Diamond",3436],["14 Diamond",4148],
+["19 Diamond",5440],["22 Diamond",6403],["28 Diamond",7751],
+["30 Diamond",8375],["33 Diamond",9375],["36 Diamond",9760],
+["44 Diamond",11800],["59 Diamond",15398],["74 Diamond",19126],
+["85 Diamond",22295],["86 Diamond",22245],["100 Diamond",26521],
+["140 Diamond",37175],["170 Diamond",44540],["172 Diamond",44818],
+["185 Diamond",48475],["222 Diamond",57175],["240 Diamond",66025],
+["257 Diamond",67014],["296 Diamond",75123],["344 Diamond",88624],
+["370 Diamond",94525],["380 Diamond",96830],["429 Diamond",109275],
+["514 Diamond",130819],["706 Diamond",180452],["875 Diamond",218579],
+["878 Diamond",224053],["963 Diamond",246255],["1159 Diamond",297925],
+["1412 Diamond",355423],["2010 Diamond",486501],["2195 Diamond",527673]
+],
+
+ff: [
+["5 Diamond",1055],["10 Diamond",2098],["12 Diamond",2050],
+["20 Diamond",3600],["25 Diamond",4369],["30 Diamond",5400],
+["50 Diamond",7110],["70 Diamond",6625],["75 Diamond",9250],
+["80 Diamond",10049],["90 Diamond",11055],["100 Diamond",13100],
+["120 Diamond",12769],["140 Diamond",16575],["150 Diamond",18300],
+["200 Diamond",20275],["210 Diamond",27520],["280 Diamond",36989],
+["355 Diamond",45725],["400 Diamond",52602],["500 Diamond",64878],
+["510 Diamond",66830],["720 Diamond",90771],["1000 Diamond",129587],
+["1450 Diamond",183730],["2000 Diamond",262071],["2180 Diamond",280920],
+["3640 Diamond",463463]
+],
+
+pubg: [
+["26 UC",8300],["35 UC",15276],["50 UC",15778],
+["60 UC",16900],["70 UC",30541],["100 UC",30501],
+["120 UC",29100],["131 UC",34275],["150 UC",43100],
+["175 UC",42100],["180 UC",59856],["210 UC",58600],
+["263 UC",72600],["300 UC",87700],["375 UC",92992],
+["700 UC",156175],["825 UC",179100],["1000 UC",230100]
+]
+};
+
+let selectedText = "";
+
+function render(id, list) {
+    const container = document.getElementById(id);
+    list.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `<b>${item[0]}</b><br>Rp ${item[1].toLocaleString()}`;
+        div.onclick = () => selectItem(div, item);
+        container.appendChild(div);
+    });
+}
+
+function selectItem(el, item) {
+    document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
+    el.classList.add("selected");
+    selectedText = item[0] + " - Rp " + item[1].toLocaleString();
+    document.getElementById("selectedItem").innerText = selectedText;
+}
+
+function orderWA() {
+    if (!selectedText) {
+        alert("Pilih diamond dulu!");
+        return;
+    }
+    let nomor = "6285126902348"; // GANTI NOMOR KAMU
+    let pesan = encodeURIComponent("Halo, saya mau order:\n" + selectedText);
+    window.open(`https://wa.me/${nomor}?text=${pesan}`);
+}
+
+render("mlbb", data.mlbb);
+render("ff", data.ff);
+render("pubg", data.pubg);
+</script>
+
+</body>
+</html>
