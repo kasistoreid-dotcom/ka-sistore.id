@@ -32,14 +32,10 @@ header {
 }
 
 .grid {
-    scroll-behavior: smooth;
-	display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 10px;
-    margin-top: 10px;
-	
-	max-height: 300px;
-	overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
 }
 
 .card {
@@ -80,38 +76,27 @@ button {
 }
 </style>
 </head>
-
 <body>
 
-<header>
-<h1>KA SISTORE ID</h1>
-<p>Top Up Murah ⚡ Proses Cepat ⚡ Aman & Terpercaya</p>
-</header>
+<header>TOP UP GAME MURAH</header>
 
 <div class="container">
 
-<label>pilih game</label>
-<select id="game"
-<option value="MLBB">Mobile Legends</option>
-<option value="Free Fire">Free Fire</option>
-<option value="PUBG">PUBG Mobile</option>
-</select>
+<div class="game-title">MLBB</div>
+<div class="grid" id="mlbb"></div>
 
-<input type="text" id="id" placeholder="Masukkan ID Game">
-<input type="text" id="server" placeholder="Server (khusus MLBB)">
-<input type="text" id="nick" placeholder="Nickname">
+<div class="game-title">FREE FIRE</div>
+<div class="grid" id="ff"></div>
 
-<div class="game-title">pilih Diamond</div>
-<div class="grid" id="list"></div>
-
-<p class="info">⚡ Proses 1-5 menit setelah pembayaran</p>
+<div class="game-title">PUBG</div>
+<div class="grid" id="pubg"></div>
 
 </div>
 
 <div class="order-box">
-    <div id="selected">belum Pilih diamond dulu</div>
+    <div id="selectedItem">Pilih diamond dulu</div>
     <br>
-    <button onclick="orderWA()">ORDER SEKARANG</button>
+    <button onclick="orderWA()">Order via WhatsApp</button>
 </div>
 
 <script>
@@ -156,55 +141,37 @@ pubg: [
 
 let selectedText = "";
 
-function render() {
-    let game = document.getElementById("game").value;
-    let container = document.getElementById("list");
-    container.innerHTML = "";
-
-    data[game].forEach(item => {
-        let div = document.createElement("div");
+function render(id, list) {
+    const container = document.getElementById(id);
+    list.forEach(item => {
+        const div = document.createElement("div");
         div.className = "card";
         div.innerHTML = `<b>${item[0]}</b><br>Rp ${item[1].toLocaleString()}`;
-        div.onclick = () => select(div, item);
+        div.onclick = () => selectItem(div, item);
         container.appendChild(div);
     });
 }
 
-function select(el, item) {
+function selectItem(el, item) {
     document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
     el.classList.add("selected");
-    selectedItem = item;
-    document.getElementById("selected").innerText =
-        item[0] + " - Rp " + item[1].toLocaleString();
+    selectedText = item[0] + " - Rp " + item[1].toLocaleString();
+    document.getElementById("selectedItem").innerText = selectedText;
 }
 
 function orderWA() {
-    let game = document.getElementById("game").value;
-    let id = document.getElementById("id").value;
-    let server = document.getElementById("server").value;
-    let nick = document.getElementById("nick").value;
-
-    if (!selectedItem || !id) {
-        alert("Lengkapi data dulu!");
+    if (!selectedText) {
+        alert("Pilih diamond dulu!");
         return;
     }
-
-    let pesan = `Halo admin, saya mau order:
-
-Game: ${game}
-Item: ${selectedItem[0]}
-Harga: Rp ${selectedItem[1].toLocaleString()}
-ID: ${id}
-Server: ${server}
-Nickname: ${nick}`;
-
     let nomor = "6285126902348"; // GANTI NOMOR KAMU
     let pesan = encodeURIComponent("Halo, saya mau order:\n" + selectedText);
     window.open(`https://wa.me/${nomor}?text=${pesan}`);
 }
 
-document.getElementById("game").addEventListener("change", render);
-render();
+render("mlbb", data.mlbb);
+render("ff", data.ff);
+render("pubg", data.pubg);
 </script>
 
 </body>
