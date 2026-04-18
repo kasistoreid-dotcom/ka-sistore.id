@@ -29,7 +29,12 @@ header{
 .slides{
   display:flex;
   width:100%;
-  height:100%; idth:100%;
+  height:100%;
+  animation:slide 9s infinite;
+}
+
+.slides img{
+  min-width:100%;
   height:100%;
   object-fit:cover;
   display:block;
@@ -77,10 +82,9 @@ header{
 
 .section{padding:15px;max-width:900px;margin:auto}
 
-.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:10px}
-.game{aspect-ratio:1/1;padding:6px;overflow:hidden;position:relative;}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px}
 .game{background:#111827;padding:12px;border-radius:12px;text-align:center;cursor:pointer;transition:.25s}
-.game:hover{transform:translateY(-5px);box-shadow:0 0 15px #9333ea, 0 0 25px #ec4899;}
+.game:hover{transform:translateY(-5px);box-shadow:0 0 15px #9333ea}
 .game.active{border:2px solid #9333ea}
 
 input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #1f2937;background:#020617;color:#fff}
@@ -187,7 +191,7 @@ h3{margin-top:18px;margin-bottom:8px;color:#c4b5fd}
   font-size:26px;
   font-weight:bold;
   color:#fff;
-  text-align:center;
+  text-align:left;
   animation:glow 1.5s infinite alternate, zoom 2s infinite;
 }
 @keyframes zoom{
@@ -234,41 +238,7 @@ body::after{
   opacity:0.3;
   z-index:-1;
 }
-.game img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:10px;
-  transition:.3s;
-  filter:brightness(1.1);
-}
 
-/* efek neon */
-.game:hover img{
-  filter:
-    brightness(1.2)
-    drop-shadow(0 0 5px #9333ea)
-    drop-shadow(0 0 10px #9333ea)
-    drop-shadow(0 0 15px #ec4899);
-}
-.game span{
-  font-size:11px;
-  padding:2px;
-  display:block;
-}
-.game:hover img{
-  transform:scale(1.05);
-  transition:.3s;
-}
-.game{
-  background:#111827;
-  padding:12px;
-  border-radius:12px;
-  text-align:center;
-  cursor:pointer;
-  transition:.25s;
-  overflow:hidden;
-}
 </style>
 </head>
 
@@ -281,28 +251,16 @@ body::after{
 	 <img src="https://i.imgur.com/VqcNunR.jpeg">
     <img src="https://i.imgur.com/H8Emyf5.jpeg">
   </div>
-  <div class="banner-text"> 🔥 DISKON HARI INI!</div>
+  <div class="banner-text"> 🔥 DISKON HARI INI.top up game 100% anti minus terpercaya</div>
 </div>
 
 <div class="section">
 
 <h3>Pilih Game</h3>
 <div class="games">
-<div class="game" onclick="selectGame('mlbb',this)">
-	<img src="https://i.imgur.com/sQsuPPW.jpeg">
-	<span>MLBB</span>
-</div>
-
-<div class="game" onclick="selectGame('ff',this)">
-	 <img src="hhttps://i.imgur.com/NWgeILw.jpeg">
-	 <span>free fire</span>
-</div>
-
-<div class="game" onclick="selectGame('pubg',this)">
-	 <img src="https://i.imgur.com/xJWVgKU.jpeg">
-	 <span>PUBG</span>
-</div>
-
+  <div class="game" onclick="selectGame('mlbb',this)">🎮 MLBB</div>
+  <div class="game" onclick="selectGame('ff',this)">🔥 Free Fire</div>
+  <div class="game" onclick="selectGame('pubg',this)">⚡ PUBG</div>
 </div>
 
 <h3>Masukkan Data</h3>
