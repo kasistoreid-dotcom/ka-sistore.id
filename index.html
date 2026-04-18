@@ -84,6 +84,17 @@ button {
 
 <div class="container">
 
+<label>Pilih Game</label>
+<select id="game">
+<option value="MLBB">Mobile Legends</option>
+<option value="Free Fire">Free Fire</option>
+<option value="PUBG">PUBG Mobile</option>
+</select>
+
+<input type="text" id="id" placeholder="Masukkan ID Game">
+<input type="text" id="server" placeholder="Server (khusus MLBB)">
+<input type="text" id="nick" placeholder="Nickname">
+
 <div class="game-title">MLBB</div>
 <div class="grid" id="mlbb"></div>
 
@@ -97,6 +108,7 @@ button {
 
 <div class="order-box">
     <div id="selectedItem">Pilih diamond dulu</div>
+	<div class="grid" id="list"></div>
     <br>
     <button onclick="orderWA()">Order via WhatsApp</button>
 </div>
