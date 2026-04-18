@@ -93,6 +93,7 @@ button {
 <div class="container">
 
 <label>Pilih Game</label>
+
 <select id="game">
 <option value="MLBB">Mobile Legends</option>
 <option value="Free Fire">Free Fire</option>
@@ -105,15 +106,12 @@ button {
 
 <img class="game-banner" src="https://imgur.com/8Fk6H44">
 <div class="game-title">MLBB</div>
-<div class="grid" id="mlbb"></div>
 
 <img class="game-banner" src="https://imgur.com/kdMEhLi">
 <div class="game-title">FREE FIRE</div>
-<div class="grid" id="ff"></div>
 
 <img class="game-banner" src="https://imgur.com/2vQZdI6">
 <div class="game-title">PUBG</div>
-<div class="grid" id="pubg"></div>
 
 </div>
 
@@ -183,12 +181,29 @@ function selectItem(el, item) {
     selectedText = item[0] + " - Rp " + item[1].toLocaleString();
     document.getElementById("selectedItem").innerText = selectedText;
 }
+let selectedDiamon = "";
+
+function pilihDiamon(nama, harga){
+	selectedDiamon = nama + "(" + harga + ")";
+)
 
 function orderWA() {
-    if (!selectedText) {
+let game = document.querySelector("select").value;
+let id = document.querySelectorAll("input")[0].value;
+let server = document.querySelectorAll("input")[1].value;
+let Nickname = document.querySelectorAll("input")[2].value;
+
+    if (selectedDiamon == ""){
         alert("Pilih diamond dulu!");
         return;
     }
+		let pesan = 'hallo admin, saya mau top up:
+	game : ${game}
+	ID: ${id}
+	Server: ${Server}
+	Nickname: ${nickname}
+	Diamond: ${selectedDiamon}
+	
     let nomor = "6285126902348"; // GANTI NOMOR KAMU
     let pesan = encodeURIComponent("Halo, saya mau order:\n" + selectedText);
     window.open(`https://wa.me/${nomor}?text=${pesan}`);
