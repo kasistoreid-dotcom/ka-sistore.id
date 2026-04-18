@@ -3,105 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Top Up Game Murah</title>
+<title>KASISTORE ID</title>
+
 <style>
 body {
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-    margin: 0;
+    margin:0;
+    font-family:'Segoe UI';
+    background:#020617;
+    color:white;
 }
 
+/* HEADER */
 header {
-    text-align: center;
-    padding: 20px;
-    background: #1e293b;
-    font-size: 24px;
-    font-weight: bold;
+    text-align:center;
+    padding:15px;
+    background:linear-gradient(90deg,#22c55e,#2563eb);
 }
 
-.container {
-    padding: 20px;
+/* BANNER FIX */
+.banner {
+    margin:15px;
+    height:200px;
+    border-radius:12px;
+    background:url('https://i.imgur.com/y3XrbYh.png') center/cover no-repeat;
+    position:relative;
 }
 
-.game-title {
-    margin-top: 30px;
-    font-size: 22px;
-    border-left: 5px solid #38bdf8;
-    padding-left: 10px;
+/* overlay biar kebaca */
+.banner::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.65);
 }
 
+/* SECTION */
+.section {
+    padding:15px;
+}
+
+/* GAME */
+.games {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+.game {
+    background:#111827;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+    cursor:pointer;
+}
+.game.active {
+    border:2px solid #22c55e;
+}
+
+/* INPUT */
+input {
+    width:100%;
+    padding:10px;
+    margin:5px 0;
+    border-radius:8px;
+    border:1px solid #1f2937;
+    background:#020617;
+    color:white;
+}
+
+/* GRID */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    max-height:260px;
+    overflow:auto;
 }
-
 .card {
-    background: #1e293b;
-    padding: 15px;
-    border-radius: 12px;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
+    background:#111827;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+    cursor:pointer;
+}
+.card.selected {
+    background:#22c55e;
+    color:black;
 }
 
-.card:hover {
-    background: #38bdf8;
-    color: black;
+/* PAYMENT */
+.pay {
+    background:#111827;
+    padding:10px;
+    border-radius:10px;
+    margin:5px 0;
+    cursor:pointer;
+}
+.pay.selected {
+    border:2px solid #22c55e;
 }
 
-.selected {
-    background: #22c55e !important;
-    color: black;
-}
-
-.order-box {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #020617;
-    padding: 15px;
-    text-align: center;
-}
-
+/* BUTTON */
 button {
-    background: #25D366;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    background:#22c55e;
+    font-weight:bold;
 }
 </style>
 </head>
+
 <body>
 
-<header>TOP UP GAME MURAH</header>
-<p class="info">⚡ Proses 1-5 menit setelah pembayaran</p>
-</header
-<div class="container">
+<header>
+<h2>KASISTORE ID</h2>
+</header>
 
-<div class="game-title">MLBB</div>
-<div class="grid" id="mlbb"></div>
+<div class="banner"></div>
 
-<div class="game-title">FREE FIRE</div>
-<div class="grid" id="ff"></div>
+<div class="section">
 
-<div class="game-title">PUBG</div>
-<div class="grid" id="pubg"></div>
-
+<h3>Pilih Game</h3>
+<div class="games">
+<div class="game" onclick="selectGame('mlbb',this)">MLBB</div>
+<div class="game" onclick="selectGame('ff',this)">Free Fire</div>
+<div class="game" onclick="selectGame('pubg',this)">PUBG</div>
 </div>
 
-<div class="order-box">
-    <div id="selectedItem">Pilih diamond dulu</div>
-    <br>
-    <button onclick="orderWA()">Order via WhatsApp</button>
+<h3>Masukkan Data</h3>
+<input id="userId" placeholder="User ID">
+<input id="serverId" placeholder="Server">
+
+<h3>Pilih Nominal</h3>
+<div id="produk" class="grid"></div>
+
+<h3>Pembayaran</h3>
+<div class="pay" onclick="selectPay(this,'DANA')">DANA</div>
+<div class="pay" onclick="selectPay(this,'OVO')">OVO</div>
+<div class="pay" onclick="selectPay(this,'QRIS')">QRIS</div>
+
+<button onclick="order()">ORDER SEKARANG</button>
+
 </div>
 
 <script>
+
 const data = {
+
 mlbb: [
 ["5 Diamond",1550],["12 Diamond",3436],["14 Diamond",4148],
 ["19 Diamond",5440],["22 Diamond",6403],["28 Diamond",7751],
@@ -138,41 +188,59 @@ pubg: [
 ["263 UC",72600],["300 UC",87700],["375 UC",92992],
 ["700 UC",156175],["825 UC",179100],["1000 UC",230100]
 ]
+
 };
 
-let selectedText = "";
+let currentGame="";
+let selectedItem="";
+let selectedPay="";
 
-function render(id, list) {
-    const container = document.getElementById(id);
-    list.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "card";
-        div.innerHTML = `<b>${item[0]}</b><br>Rp ${item[1].toLocaleString()}`;
-        div.onclick = () => selectItem(div, item);
-        container.appendChild(div);
+function selectGame(game,el){
+    currentGame=game;
+    document.querySelectorAll(".game").forEach(g=>g.classList.remove("active"));
+    el.classList.add("active");
+
+    let box=document.getElementById("produk");
+    box.innerHTML="";
+
+    data[game].forEach(item=>{
+        let div=document.createElement("div");
+        div.className="card";
+        div.innerHTML=item[0]+"<br>Rp "+item[1].toLocaleString();
+        div.onclick=()=>{
+            document.querySelectorAll(".card").forEach(c=>c.classList.remove("selected"));
+            div.classList.add("selected");
+            selectedItem=item[0]+" - Rp "+item[1].toLocaleString();
+        };
+        box.appendChild(div);
     });
 }
 
-function selectItem(el, item) {
-    document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
+function selectPay(el,metode){
+    document.querySelectorAll(".pay").forEach(p=>p.classList.remove("selected"));
     el.classList.add("selected");
-    selectedText = item[0] + " - Rp " + item[1].toLocaleString();
-    document.getElementById("selectedItem").innerText = selectedText;
+    selectedPay=metode;
 }
 
-function orderWA() {
-    if (!selectedText) {
-        alert("Pilih diamond dulu!");
+function order(){
+    let id=document.getElementById("userId").value.trim();
+    let server=document.getElementById("serverId").value.trim();
+
+    if(!currentGame || !selectedItem || !selectedPay || !id){
+        alert("Lengkapi semua data!");
         return;
     }
-    let nomor = "6285126902348"; // GANTI NOMOR KAMU
-    let pesan = encodeURIComponent("Halo, saya mau order:\n" + selectedText);
-    window.open(`https://wa.me/${nomor}?text=${pesan}`);
-}
 
-render("mlbb", data.mlbb);
-render("ff", data.ff);
-render("pubg", data.pubg);
+    let text=encodeURIComponent(
+        "ORDER TOP UP\n\nGame: "+currentGame.toUpperCase()+
+        "\nID: "+id+
+        "\nServer: "+server+
+        "\nItem: "+selectedItem+
+        "\nPembayaran: "+selectedPay
+    );
+
+    window.open("https://wa.me/6285126902348?text="+text);
+}
 </script>
 
 </body>
