@@ -3,60 +3,276 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KASISTORE ID</title>
+<title>KASISTORE ID VIOLET</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:'Segoe UI',sans-serif;background:#060818;color:#fff}
+body{margin:0;font-family:'Segoe UI',sans-serif;background:#0b0618;color:#fff}
 
-/* HEADER */
-header{ text-align:center; padding:16px; background:linear-gradient(90deg,#6d28d9,#9333ea,#4f46e5); box-shadow:0 0 15px rgba(147,51,234,.6)}
+header{
+ text-align:center;
+ padding:18px;
+ background:linear-gradient(90deg,#6d28d9,#7c3aed,#8b5cf6);
+ box-shadow:0 0 20px rgba(139,92,246,.8);
+}
 
-/* BANNER */
-.banner{ margin:15px; height:200px; border-radius:12px; background:url('https://i.imgur.com/y3XrbYh.png') center/cover no-repeat; position:relative; overflow:hidden}
-.banner::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.7)}
+header h2{
+ font-family:'Orbitron',sans-serif;
+ font-size:26px;
+ letter-spacing:2px;
+ background:linear-gradient(90deg,#ffffff,#c4b5fd);
+ -webkit-background-clip:text;
+ -webkit-text-fill-color:transparent;
+ text-shadow:0 0 10px rgba(139,92,246,.6);
+}
+
+.banner{
+ margin:15px;
+ height:200px;
+ border-radius:12px;
+ background:linear-gradient(120deg,#4c1d95,#7c3aed,#a78bfa);
+}
 
 .section{padding:15px;max-width:900px;margin:auto}
 
-/* GAME GRID */
-.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px}
-.game{background:#111827;padding:12px;border-radius:12px;text-align:center;cursor:pointer;transition:.25s}
-.game:hover{transform:translateY(-5px);box-shadow:0 0 15px #9333ea}
-.game.active{border:2px solid #9333ea}
+.games{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
+ gap:12px;
+}
 
-/* INPUT */
-input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #1f2937;background:#020617;color:#fff}
+.game{
+ background:#1e1b4b;
+ padding:12px;
+ border-radius:12px;
+ text-align:center;
+ cursor:pointer;
+ transition:.25s;
+}
 
-/* NOMINAL GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;max-height:300px;overflow:auto}
-.card{background:#111827;padding:12px;border-radius:12px;text-align:center;cursor:pointer;transition:.25s}
-.card:hover{transform:scale(1.05);box-shadow:0 0 12px #9333ea}
-.card.selected{background:#ec4899;color:#fff;box-shadow:0 0 12px #ec4899}
+.game:hover{
+ transform:translateY(-5px);
+ box-shadow:0 0 15px #8b5cf6;
+}
 
-/* PAYMENT */
-.pay{background:#111827;padding:10px;border-radius:10px;margin:6px 0;cursor:pointer;transition:.2s}
-.pay:hover{box-shadow:0 0 10px #9333ea}
-.pay.selected{border:2px solid #ec4899}
+.game.active{
+ border:2px solid #a78bfa;
+}
 
-/* BUTTON */
-button{width:100%;padding:12px;margin-top:12px;border:none;border-radius:10px;background:linear-gradient(90deg,#9333ea,#ec4899);color:#fff;font-weight:bold;cursor:pointer;transition:.25s}
-button:hover{transform:scale(1.03);box-shadow:0 0 15px #ec4899}
+input{
+ width:100%;
+ padding:10px;
+ margin:6px 0;
+ border-radius:8px;
+ border:1px solid #312e81;
+ background:#0b0618;
+ color:#fff;
+}
+
+.nickname{font-size:13px;color:#c4b5fd;margin-bottom:10px}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+ gap:12px;
+ max-height:300px;
+ overflow:auto;
+}
+
+.card{
+ background:#1e1b4b;
+ padding:12px;
+ border-radius:12px;
+ text-align:center;
+ cursor:pointer;
+ transition:.25s;
+ position:relative;
+}
+
+.card:hover{
+ transform:scale(1.05);
+ box-shadow:0 0 12px #8b5cf6;
+}
+
+.card.selected{
+ background:#7c3aed;
+ color:#fff;
+ box-shadow:0 0 15px #a78bfa;
+}
+
+.badge{
+ position:absolute;
+ top:5px;
+ right:5px;
+ font-size:10px;
+ padding:3px 6px;
+ border-radius:6px;
+ background:#a78bfa;
+ color:#000;
+}
+
+.old{
+ text-decoration:line-through;
+ font-size:11px;
+ color:#c4b5fd;
+}
+
+.pay{
+ background:#1e1b4b;
+ padding:10px;
+ border-radius:10px;
+ margin:6px 0;
+ cursor:pointer;
+}
+
+.pay.selected{
+ border:2px solid #a78bfa;
+}
+
+button{
+ width:100%;
+ padding:12px;
+ margin-top:12px;
+ border:none;
+ border-radius:10px;
+ background:linear-gradient(90deg,#7c3aed,#a78bfa);
+ color:#fff;
+ font-weight:bold;
+ cursor:pointer;
+}
 
 h3{margin-top:18px;margin-bottom:8px;color:#c4b5fd}
+
+.timer{
+ margin-top:10px;
+ background:#1e1b4b;
+ padding:10px;
+ border-radius:10px;
+ text-align:center;
+ font-size:14px;
+ color:#c4b5fd;
+}
+
+.testimoni{margin-top:25px}
+.testi-box{
+ background:#1e1b4b;
+ padding:12px;
+ border-radius:10px;
+ margin-bottom:10px;
+ font-size:13px;
+ color:#e0e7ff;
+}
+
+.notif{
+ position:fixed;
+ bottom:20px;
+ left:20px;
+ background:#1e1b4b;
+ padding:10px 14px;
+ border-radius:10px;
+ box-shadow:0 0 15px #8b5cf6;
+ font-size:13px;
+ display:none;
+}
+/* MICRO INTERACTIONS & ANIMATIONS */
+
+/* Highlight (most picked) subtle blink */
+@keyframes softBlink{
+ 0%{box-shadow:0 0 8px rgba(236,72,153,.4)}
+ 50%{box-shadow:0 0 18px rgba(236,72,153,.9)}
+ 100%{box-shadow:0 0 8px rgba(236,72,153,.4)}
+}
+
+.card.best, .card.hot{
+ animation:softBlink 2s infinite;
+}
+
+
+/* Smooth global */
+*{
+ transition: all .25s ease;
+}
+
+/* Fade in section */
+.section{
+ animation:fadeIn .6s ease;
+}
+
+@keyframes fadeIn{
+ from{opacity:0;transform:translateY(10px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+/* Button press effect */
+button:active{
+ transform:scale(.96);
+ box-shadow:0 0 5px rgba(236,72,153,.5);
+}
+
+/* Card click ripple */
+.card{
+ overflow:hidden;
+ position:relative;
+}
+.card::after{
+ content:"";
+ position:absolute;
+ width:0;
+ height:0;
+ background:rgba(255,255,255,.2);
+ border-radius:50%;
+ transform:translate(-50%,-50%);
+ top:50%;
+ left:50%;
+ opacity:0;
+}
+.card:active::after{
+ width:200px;
+ height:200px;
+ opacity:1;
+ transition:.4s;
+}
+
+/* Glow pulse on BEST badge */
+.badge{
+ animation:pulse 2s infinite;
+}
+@keyframes pulse{
+ 0%{box-shadow:0 0 5px #a78bfa}
+ 50%{box-shadow:0 0 15px #ec4899}
+ 100%{box-shadow:0 0 5px #a78bfa}
+}
+
+/* Notification slide */
+.notif{
+ animation:slideUp .5s ease;
+}
+@keyframes slideUp{
+ from{transform:translateY(40px);opacity:0}
+ to{transform:translateY(0);opacity:1}
+}
+
+/* Hover glow stronger */
+.card:hover,.game:hover{
+ filter:brightness(1.1);
+}
+
+/* Input focus */
+input:focus{
+ outline:none;
+ border:1px solid #7c3aed;
+ box-shadow:0 0 8px rgba(124,58,237,.6);
+}
 
 </style>
 </head>
 
 <body>
-
-<header>
-<h2>KASISTORE ID</h2>
-</header>
-
+<header><h2>KASISTORE ID</h2></header>
 <div class="banner"></div>
 
 <div class="section">
-
 <h3>Pilih Game</h3>
 <div class="games">
 <div class="game" onclick="selectGame('mlbb',this)">MLBB</div>
@@ -65,8 +281,9 @@ h3{margin-top:18px;margin-bottom:8px;color:#c4b5fd}
 </div>
 
 <h3>Masukkan Data</h3>
-<input id="userId" placeholder="User ID">
+<input id="userId" placeholder="User ID" onkeyup="cekNickname()">
 <input id="serverId" placeholder="Server">
+<div id="nick" class="nickname"></div>
 
 <h3>Pilih Nominal</h3>
 <div id="produk" class="grid"></div>
@@ -76,14 +293,103 @@ h3{margin-top:18px;margin-bottom:8px;color:#c4b5fd}
 <div class="pay" onclick="selectPay(this,'OVO')">OVO</div>
 <div class="pay" onclick="selectPay(this,'QRIS')">QRIS</div>
 
+<div class="timer" id="timer">Promo berakhir dalam: 05:00</div>
 <button onclick="order()">ORDER SEKARANG</button>
-
 </div>
 
+<div class="section testimoni">
+<h3>Testimoni</h3>
+<!-- 50 TESTIMONI -->
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Cepat banget! - Rizky</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Harga murah! - Andi</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Admin fast respon! - Budi</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Top up lancar - Siti</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Recommended - Dika</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Proses cepat - Fajar</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Diamond masuk - Rina</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Aman banget - Asep</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Murah meriah - Putri</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Admin ramah - Yoga</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Mantap - Ilham</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Cepat & praktis - Dewi</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Gak nyesel - Rahmat</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Trusted - Bayu</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Langganan - Nanda</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Kilat! - Vina</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Gercep - Agus</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Top up cepat - Lina</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Gak ribet - Hendra</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Keren - Tika</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Worth it - Deni</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Bersahabat - Sari</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Aman - Wawan</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Cepat - Yuni</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Puas - Arif</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Instan - Rudi</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Mantap jiwa - Doni</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Rekomendasi - Eka</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Sopan - Fina</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Murah - Gita</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Terbaik - Hari</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Gak gagal - Indra</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Top - Joko</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Aman cepat - Kiki</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Terjangkau - Lala</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Fast respon - Maman</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Seller bagus - Nia</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Cepat banget - Oki</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Gak lama - Putra</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Balik lagi - Qori</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Aman mantap - Rara</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Terbaik pokoknya - Siska</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Instan - Tono</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Gercep banget - Udin</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Murah meriah - Vito</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Pelayanan mantap - Wati</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Aman cepat - Yanto</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Best store - Zaki</div>
+</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Harga murah & terpercaya - Andi</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Admin fast respon! - Budi</div>
+</div>
+
+<div class="notif" id="notif"></div>
+
 <script>
-const data={mlbb:[["5 Diamond",1550],["12 Diamond",3436],["14 Diamond",4148],["19 Diamond",5440],["22 Diamond",6403],["28 Diamond",7751],["30 Diamond",8375],["33 Diamond",9375],["36 Diamond",9760],["44 Diamond",11800],["59 Diamond",15398],["74 Diamond",19126],["85 Diamond",22295],["86 Diamond",22245],["100 Diamond",26521],["140 Diamond",37175],["170 Diamond",44540],["172 Diamond",44818],["185 Diamond",48475],["222 Diamond",57175],["240 Diamond",66025],["257 Diamond",67014],["296 Diamond",75123],["344 Diamond",88624],["370 Diamond",94525],["380 Diamond",96830],["429 Diamond",109275],["514 Diamond",130819],["706 Diamond",180452],["875 Diamond",218579],["878 Diamond",224053],["963 Diamond",246255],["1159 Diamond",297925],["1412 Diamond",355423],["2010 Diamond",486501],["2195 Diamond",527673]],
-ff:[["5 Diamond",1055],["10 Diamond",2098],["12 Diamond",2050],["20 Diamond",3600],["25 Diamond",4369],["30 Diamond",5400],["50 Diamond",7110],["70 Diamond",6625],["75 Diamond",9250],["80 Diamond",10049],["90 Diamond",11055],["100 Diamond",13100],["120 Diamond",12769],["140 Diamond",16575],["150 Diamond",18300],["200 Diamond",20275],["210 Diamond",27520],["280 Diamond",36989],["355 Diamond",45725],["400 Diamond",52602],["500 Diamond",64878],["510 Diamond",66830],["720 Diamond",90771],["1000 Diamond",129587],["1450 Diamond",183730],["2000 Diamond",262071],["2180 Diamond",280920],["3640 Diamond",463463]],
-pubg:[["26 UC",8300],["35 UC",15276],["50 UC",15778],["60 UC",16900],["70 UC",30541],["100 UC",30501],["120 UC",29100],["131 UC",34275],["150 UC",43100],["175 UC",42100],["180 UC",59856],["210 UC",58600],["263 UC",72600],["300 UC",87700],["375 UC",92992],["700 UC",156175],["825 UC",179100],["1000 UC",230100]]};
+const data={
+ mlbb:[
+  {n:"5 Diamond",h:1550},{n:"12 Diamond",h:3436},{n:"14 Diamond",h:4148},{n:"19 Diamond",h:5440},
+  {n:"22 Diamond",h:6403},{n:"28 Diamond",h:7751},{n:"30 Diamond",h:8375},{n:"33 Diamond",h:9375},
+  {n:"36 Diamond",h:9760},{n:"44 Diamond",h:11800},{n:"59 Diamond",h:15398},{n:"74 Diamond",h:19126},
+  {n:"85 Diamond",h:22295,best:true},{n:"86 Diamond",h:22245},{n:"100 Diamond",h:26521},
+  {n:"140 Diamond",h:37175},{n:"170 Diamond",h:44540},{n:"172 Diamond",h:44818,hot:true},
+  {n:"185 Diamond",h:48475},{n:"222 Diamond",h:57175},{n:"240 Diamond",h:66025},
+  {n:"257 Diamond",h:67014,disc:true,old:70000},{n:"296 Diamond",h:75123},{n:"344 Diamond",h:88624},
+  {n:"370 Diamond",h:94525},{n:"380 Diamond",h:96830},{n:"429 Diamond",h:109275},
+  {n:"514 Diamond",h:130819},{n:"706 Diamond",h:180452},{n:"875 Diamond",h:218579},
+  {n:"878 Diamond",h:224053},{n:"963 Diamond",h:246255},{n:"1159 Diamond",h:297925},
+  {n:"1412 Diamond",h:355423},{n:"2010 Diamond",h:486501},{n:"2195 Diamond",h:527673}
+ ],
+
+ ff:[
+  {n:"5 Diamond",h:1055},{n:"10 Diamond",h:2098},{n:"12 Diamond",h:2050},{n:"20 Diamond",h:3600},
+  {n:"25 Diamond",h:4369},{n:"30 Diamond",h:5400},{n:"50 Diamond",h:7110},{n:"70 Diamond",h:6625,best:true},
+  {n:"75 Diamond",h:9250},{n:"80 Diamond",h:10049},{n:"90 Diamond",h:11055},{n:"100 Diamond",h:13100,hot:true},
+  {n:"120 Diamond",h:12769},{n:"140 Diamond",h:16575},{n:"150 Diamond",h:18300},{n:"200 Diamond",h:20275},
+  {n:"210 Diamond",h:27520},{n:"280 Diamond",h:36989},{n:"355 Diamond",h:45725,disc:true,old:50000},
+  {n:"400 Diamond",h:52602},{n:"500 Diamond",h:64878},{n:"510 Diamond",h:66830},{n:"720 Diamond",h:90771},
+  {n:"1000 Diamond",h:129587},{n:"1450 Diamond",h:183730},{n:"2000 Diamond",h:262071},{n:"2180 Diamond",h:280920},
+  {n:"3640 Diamond",h:463463}
+ ],
+
+ pubg:[
+  {n:"26 UC",h:8300},{n:"35 UC",h:15276},{n:"50 UC",h:15778},{n:"60 UC",h:16900,best:true},
+  {n:"70 UC",h:30541},{n:"100 UC",h:30501},{n:"120 UC",h:29100},{n:"131 UC",h:34275},
+  {n:"150 UC",h:43100,hot:true},{n:"175 UC",h:42100},{n:"180 UC",h:59856},{n:"210 UC",h:58600},
+  {n:"263 UC",h:72600},{n:"300 UC",h:87700},{n:"375 UC",h:92992,disc:true,old:100000},
+  {n:"700 UC",h:156175},{n:"825 UC",h:179100},{n:"1000 UC",h:230100}
+ ]
+};
 
 let currentGame="";let selectedItem="";let selectedPay="";
 
@@ -91,21 +397,36 @@ function selectGame(game,el){
  currentGame=game;
  document.querySelectorAll('.game').forEach(g=>g.classList.remove('active'));
  el.classList.add('active');
-
  let box=document.getElementById('produk');
  box.innerHTML="";
-
  data[game].forEach(item=>{
    let div=document.createElement('div');
    div.className='card';
-   div.innerHTML=item[0]+"<br>Rp "+item[1].toLocaleString();
+   if(item.best) div.innerHTML+="<div class='badge'>BEST</div>";
+   let label="";
+ if(item.best) label="<div class='badge'>BEST</div>";
+ if(item.hot) label="<div class='badge' style='background:#f59e0b'>HOT</div>";
+ if(item.disc) label="<div class='badge' style='background:#ec4899'>DISKON</div>";
+
+ let harga="Rp "+item.h.toLocaleString();
+ let old=item.old?"<div class='old'>Rp "+item.old.toLocaleString()+"</div>":"";
+
+ div.innerHTML+=label+item.n+"<br>"+old+"<br>"+harga;
    div.onclick=()=>{
      document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));
      div.classList.add('selected');
-     selectedItem=item[0]+" - Rp "+item[1].toLocaleString();
+     selectedItem=item.n+" - Rp "+item.h;
    };
    box.appendChild(div);
  });
+}
+
+function cekNickname(){
+ let id=document.getElementById('userId').value;
+ let nick=document.getElementById('nick');
+ if(id.length<5){nick.innerHTML="";return}
+ nick.innerHTML="Checking nickname...";
+ setTimeout(()=>{nick.innerHTML="Nickname: Player_"+id.slice(-4)},800);
 }
 
 function selectPay(el,metode){
@@ -116,23 +437,30 @@ function selectPay(el,metode){
 
 function order(){
  let id=document.getElementById('userId').value.trim();
- let server=document.getElementById('serverId').value.trim();
-
- if(!currentGame||!selectedItem||!selectedPay||!id){
-   alert('Lengkapi semua data!');
-   return;
- }
-
- let text=encodeURIComponent(
-   "ORDER TOP UP\n\nGame: "+currentGame.toUpperCase()+
-   "\nID: "+id+
-   "\nServer: "+server+
-   "\nItem: "+selectedItem+
-   "\nPembayaran: "+selectedPay
- );
-
+ if(!currentGame||!selectedItem||!selectedPay||!id){alert('Lengkapi semua data!');return}
+ let text=encodeURIComponent("ORDER TOP UP\nID: "+id+"\nItem: "+selectedItem);
  window.open("https://wa.me/6285126902348?text="+text);
 }
+
+const nama=["Rizky","Andi","Budi","Siti","Dika","Fajar","Rina","Asep","Putri","Yoga","Ilham","Dewi","Rahmat","Bayu","Nanda","Vina","Agus","Lina","Hendra","Tika","Deni","Sari","Wawan","Yuni","Arif","Rudi","Doni","Eka","Fina","Gita"];
+const produk=["86 Diamond","172 Diamond","70 Diamond","60 UC"];
+function showNotif(){
+ let n=nama[Math.floor(Math.random()*nama.length)];
+ let p=produk[Math.floor(Math.random()*produk.length)];
+ let notif=document.getElementById('notif');
+ notif.innerText=`${n} baru saja membeli ${p}`;
+ notif.style.display='block';
+ setTimeout(()=>{notif.style.display='none'},3000);
+}
+setInterval(showNotif,5000);
+
+let time=300;
+setInterval(()=>{
+ let m=Math.floor(time/60);
+ let s=time%60;
+ document.getElementById('timer').innerText=`Promo berakhir dalam: ${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+ if(time>0) time--;
+},1000);
 </script>
 
 </body>
