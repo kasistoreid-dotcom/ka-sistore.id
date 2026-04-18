@@ -93,7 +93,6 @@ button {
 <div class="container">
 
 <label>Pilih Game</label>
-
 <select id="game">
 <option value="MLBB">Mobile Legends</option>
 <option value="Free Fire">Free Fire</option>
@@ -175,12 +174,6 @@ function render(id, list) {
     });
 }
 
-function selectItem(el, item) {
-    document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
-    el.classList.add("selected");
-    selectedText = item[0] + " - Rp " + item[1].toLocaleString();
-    document.getElementById("selectedItem").innerText = selectedText;
-}
 let selectedDiamon = "";
 
 function pilihDiamon(nama, harga){
