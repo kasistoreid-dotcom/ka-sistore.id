@@ -9,9 +9,9 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:'Segoe UI',sans-serif;background:#060818;color:#fff}
 
-header{text-align:center;padding:16px;background:linear-gradient(90deg,#6d28d9,#9333ea,#4f46e5);box-shadow:0 0 15px rgba(147,51,234,.6)}
+header{ text-align:center; padding:16px; background:linear-gradient(90deg,#6d28d9,#9333ea,#4f46e5); box-shadow:0 0 15px rgba(147,51,234,.6)}
 
-.banner{margin:15px;height:200px;border-radius:12px;background:url('https://i.imgur.com/y3XrbYh.png') center/cover no-repeat;position:relative}
+.banner{ margin:15px; height:200px; border-radius:12px; background:url('https://i.imgur.com/y3XrbYh.png') center/cover no-repeat; position:relative}
 .banner::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.7)}
 
 .section{padding:15px;max-width:900px;margin:auto}
@@ -23,19 +23,33 @@ header{text-align:center;padding:16px;background:linear-gradient(90deg,#6d28d9,#
 
 input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #1f2937;background:#020617;color:#fff}
 
-.nickname{font-size:13px;color:#22c55e;margin-bottom:10px}
+.nickname{
+  font-size:13px;
+  color:#22c55e;
+  margin-bottom:10px;
+}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;max-height:300px;overflow:auto}
+
 .card{background:#111827;padding:12px;border-radius:12px;text-align:center;cursor:pointer;transition:.25s;position:relative}
 .card:hover{transform:scale(1.05);box-shadow:0 0 12px #9333ea}
 .card.selected{background:#ec4899;color:#fff;box-shadow:0 0 12px #ec4899}
 
-.badge{position:absolute;top:5px;right:5px;font-size:10px;padding:3px 6px;border-radius:6px;background:#22c55e}
-.badge-hot{background:#ef4444}
-.badge-promo{background:#f59e0b}
-.badge-murah{background:#22c55e}
+.badge{
+ position:absolute;
+ top:5px;
+ right:5px;
+ font-size:10px;
+ padding:3px 6px;
+ border-radius:6px;
+ background:#22c55e;
+}
 
-.old{text-decoration:line-through;font-size:11px;color:#9ca3af}
+.old{
+ text-decoration:line-through;
+ font-size:11px;
+ color:#9ca3af;
+}
 
 .pay{background:#111827;padding:10px;border-radius:10px;margin:6px 0;cursor:pointer}
 .pay.selected{border:2px solid #ec4899}
@@ -44,12 +58,47 @@ button{width:100%;padding:12px;margin-top:12px;border:none;border-radius:10px;ba
 
 h3{margin-top:18px;margin-bottom:8px;color:#c4b5fd}
 
-.notif{position:fixed;bottom:20px;left:20px;background:#111827;padding:10px 14px;border-radius:10px;box-shadow:0 0 15px #9333ea;font-size:13px;display:none}
+.badge-hot{background:#ef4444}
+.badge-promo{background:#f59e0b}
+.badge-murah{background:#22c55e}
 
-.timer{margin-top:10px;background:#111827;padding:10px;border-radius:10px;text-align:center;font-size:14px;color:#fbbf24}
+.testimoni{
+ margin-top:25px;
+}
+.testi-box{
+ background:#111827;
+ padding:12px;
+ border-radius:10px;
+ margin-bottom:10px;
+ font-size:13px;
+ color:#d1d5db;
+}
 
-.testimoni{margin-top:25px}
-.testi-box{background:#111827;padding:12px;border-radius:10px;margin-bottom:10px;font-size:13px;color:#d1d5db}
+/* NOTIF */
+.notif{
+ position:fixed;
+ bottom:20px;
+ left:20px;
+ background:#111827;
+ padding:10px 14px;
+ border-radius:10px;
+ box-shadow:0 0 15px #9333ea;
+ font-size:13px;
+ display:none;
+ animation:fadeIn .5s;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* TIMER */
+.timer{
+ margin-top:10px;
+ background:#111827;
+ padding:10px;
+ border-radius:10px;
+ text-align:center;
+ font-size:14px;
+ color:#fbbf24;
+}
 </style>
 </head>
 
@@ -86,94 +135,78 @@ h3{margin-top:18px;margin-bottom:8px;color:#c4b5fd}
 
 <div class="section testimoni">
 <h3>Testimoni</h3>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Cepat banget! Baru 2 menit masuk - Rizky</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Harga murah & terpercaya - Andi</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Admin fast respon! - Budi</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Top up lancar tanpa kendala - Siti</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Recommended banget! - Dika</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Proses super cepat - Fajar</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Diamond langsung masuk - Rina</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Aman & terpercaya - Asep</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Harga paling murah - Putri</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Admin ramah - Yoga</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Mantap pelayanannya - Ilham</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Cepat & praktis - Dewi</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Gak nyesel beli disini - Rahmat</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Trusted seller - Bayu</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Langganan disini terus - Nanda</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Proses kilat! - Vina</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Adminnya gercep - Agus</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Top up paling cepat - Lina</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Gak ribet sama sekali - Hendra</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Keren websitenya - Tika</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Worth it banget - Deni</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Harga bersahabat - Sari</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Proses aman - Wawan</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Layanan cepat - Yuni</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Selalu puas - Arif</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Diamond masuk instan - Rudi</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Mantap jiwa - Doni</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Super recommended - Eka</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Admin sopan - Fina</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Cepat & murah - Gita</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Pelayanan terbaik - Hari</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Nggak pernah gagal - Indra</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Top banget - Joko</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Aman dan cepat - Kiki</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Harga terjangkau - Lala</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Fast respon admin - Maman</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Recommended seller - Nia</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Cepat banget prosesnya - Oki</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Gak pake lama - Putra</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Pasti balik lagi - Qori</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Mantap & aman - Rara</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Terbaik pokoknya - Siska</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Proses instan - Tono</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Admin gercep banget - Udin</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Harga murah meriah - Vito</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Pelayanan mantap - Wati</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Cepat dan aman - Yanto</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Best store! - Zaki</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Cepat banget! Baru 2 menit masuk - Andi</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Harga murah & terpercaya - Budi</div>
+<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Admin fast respon! - Siti</div>
 </div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Harga murah & terpercaya - Andi</div>
-<div class="testi-box">⭐️⭐️⭐️⭐️⭐️ Admin fast respon! - Budi</div>
-</div>
-
-<div class="notif" id="notif"></div>
 
 <script>
 const data={
  mlbb:[
-  {n:"5 Diamond",h:1550},{n:"12 Diamond",h:3436},{n:"14 Diamond",h:4148},{n:"19 Diamond",h:5440},
-  {n:"22 Diamond",h:6403},{n:"28 Diamond",h:7751},{n:"30 Diamond",h:8375},{n:"33 Diamond",h:9375},
-  {n:"36 Diamond",h:9760},{n:"44 Diamond",h:11800},{n:"59 Diamond",h:15398},{n:"74 Diamond",h:19126},
-  {n:"85 Diamond",h:22295,old:25000,best:true},{n:"86 Diamond",h:22245},{n:"100 Diamond",h:26521},
-  {n:"140 Diamond",h:37175},{n:"170 Diamond",h:44540},{n:"172 Diamond",h:44818,old:48000},
-  {n:"185 Diamond",h:48475},{n:"222 Diamond",h:57175},{n:"240 Diamond",h:66025},
-  {n:"257 Diamond",h:67014,old:70000},{n:"296 Diamond",h:75123},{n:"344 Diamond",h:88624,best:true},
-  {n:"370 Diamond",h:94525},{n:"380 Diamond",h:96830},{n:"429 Diamond",h:109275,old:115000},
-  {n:"514 Diamond",h:130819},{n:"706 Diamond",h:180452},{n:"875 Diamond",h:218579},
-  {n:"878 Diamond",h:224053},{n:"963 Diamond",h:246255},{n:"1159 Diamond",h:297925},
-  {n:"1412 Diamond",h:355423},{n:"2010 Diamond",h:486501},{n:"2195 Diamond",h:527673}
+  {n:"5 Diamond",h:1550},
+  {n:"12 Diamond",h:3436},
+  {n:"19 Diamond",h:5440},
+  {n:"28 Diamond",h:7751},
+  {n:"44 Diamond",h:11800},
+  {n:"59 Diamond",h:15398},
+  {n:"74 Diamond",h:19126},
+  {n:"85 Diamond",h:22295,old:25000,best:true},
+  {n:"86 Diamond",h:22245},
+  {n:"100 Diamond",h:26521},
+  {n:"140 Diamond",h:37175},
+  {n:"172 Diamond",h:44818,old:48000},
+  {n:"185 Diamond",h:48475},
+  {n:"222 Diamond",h:57175},
+  {n:"257 Diamond",h:67014,old:70000},
+  {n:"344 Diamond",h:88624,best:true},
+  {n:"429 Diamond",h:109275,old:115000},
+  {n:"514 Diamond",h:130819},
+  {n:"706 Diamond",h:180452},
+  {n:"878 Diamond",h:224053},
+  {n:"963 Diamond",h:246255},
+  {n:"1159 Diamond",h:297925},
+  {n:"1412 Diamond",h:355423},
+  {n:"2010 Diamond",h:486501},
+  {n:"2195 Diamond",h:527673}
  ],
 
  ff:[
-  {n:"5 Diamond",h:1055},{n:"10 Diamond",h:2098},{n:"12 Diamond",h:2050},{n:"20 Diamond",h:3600},
-  {n:"25 Diamond",h:4369},{n:"30 Diamond",h:5400},{n:"50 Diamond",h:7110},{n:"70 Diamond",h:6625,best:true},
-  {n:"75 Diamond",h:9250},{n:"80 Diamond",h:10049},{n:"90 Diamond",h:11055},{n:"100 Diamond",h:13100,old:15000},
-  {n:"120 Diamond",h:12769},{n:"140 Diamond",h:16575},{n:"150 Diamond",h:18300},{n:"200 Diamond",h:20275},
-  {n:"210 Diamond",h:27520},{n:"280 Diamond",h:36989},{n:"355 Diamond",h:45725,old:50000},
-  {n:"400 Diamond",h:52602},{n:"500 Diamond",h:64878},{n:"510 Diamond",h:66830},{n:"720 Diamond",h:90771},
-  {n:"1000 Diamond",h:129587},{n:"1450 Diamond",h:183730},{n:"2000 Diamond",h:262071},{n:"2180 Diamond",h:280920},
+  {n:"5 Diamond",h:1055},
+  {n:"10 Diamond",h:2098},
+  {n:"20 Diamond",h:3600},
+  {n:"30 Diamond",h:5400},
+  {n:"50 Diamond",h:7110},
+  {n:"70 Diamond",h:6625,best:true},
+  {n:"75 Diamond",h:9250},
+  {n:"90 Diamond",h:11055},
+  {n:"100 Diamond",h:13100,old:15000},
+  {n:"140 Diamond",h:16575},
+  {n:"150 Diamond",h:18300},
+  {n:"200 Diamond",h:20275},
+  {n:"210 Diamond",h:27520},
+  {n:"280 Diamond",h:36989},
+  {n:"355 Diamond",h:45725,old:50000},
+  {n:"500 Diamond",h:64878},
+  {n:"720 Diamond",h:90771},
+  {n:"1000 Diamond",h:129587},
+  {n:"1450 Diamond",h:183730},
+  {n:"2000 Diamond",h:262071},
   {n:"3640 Diamond",h:463463}
  ],
 
  pubg:[
-  {n:"26 UC",h:8300},{n:"35 UC",h:15276},{n:"50 UC",h:15778},{n:"60 UC",h:16900,best:true},
-  {n:"70 UC",h:30541},{n:"100 UC",h:30501},{n:"120 UC",h:29100},{n:"131 UC",h:34275},
-  {n:"150 UC",h:43100},{n:"175 UC",h:42100},{n:"180 UC",h:59856},{n:"210 UC",h:58600},
-  {n:"263 UC",h:72600},{n:"300 UC",h:87700},{n:"375 UC",h:92992,old:100000},
-  {n:"700 UC",h:156175},{n:"825 UC",h:179100},{n:"1000 UC",h:230100}
+  {n:"26 UC",h:8300},
+  {n:"60 UC",h:16900,best:true},
+  {n:"120 UC",h:29100},
+  {n:"150 UC",h:43100},
+  {n:"180 UC",h:59856},
+  {n:"210 UC",h:58600},
+  {n:"263 UC",h:72600},
+  {n:"300 UC",h:87700},
+  {n:"375 UC",h:92992,old:100000},
+  {n:"700 UC",h:156175},
+  {n:"825 UC",h:179100},
+  {n:"1000 UC",h:230100}
  ]
 };
 
@@ -191,10 +224,20 @@ function selectGame(game,el){
    let div=document.createElement('div');
    div.className='card';
 
-   if(item.best){div.innerHTML+="<div class='badge'>BEST</div>"}
-   if(item.old){div.innerHTML+=`<span class='old'>Rp ${item.old}</span><br>`}
+   if(item.best){
+     div.innerHTML+="<div class='badge'>BEST</div>";
+   }
+   if(Math.random()<0.3){div.innerHTML+="<div class='badge badge-hot'>HOT</div>"}
+   if(Math.random()<0.3){div.innerHTML+="<div class='badge badge-promo'>PROMO</div>"}
+   if(Math.random()<0.3){div.innerHTML+="<div class='badge badge-murah'>MURAH</div>"}
 
-   div.innerHTML+=`${item.n}<br>Rp ${item.h}`;
+   div.innerHTML+=`<b>${item.n}</b><br>`;
+
+   if(item.old){
+     div.innerHTML+=`<span class='old'>Rp ${item.old}</span><br>`;
+   }
+
+   div.innerHTML+=`Rp ${item.h}`;
 
    div.onclick=()=>{
      document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));
@@ -209,9 +252,18 @@ function selectGame(game,el){
 function cekNickname(){
  let id=document.getElementById('userId').value;
  let nick=document.getElementById('nick');
- if(id.length<5){nick.innerHTML="";return}
+
+ if(id.length<5){
+   nick.innerHTML="";
+   return;
+ }
+
  nick.innerHTML="Checking nickname...";
- setTimeout(()=>{nick.innerHTML="Nickname: Player_"+id.slice(-4)},800);
+
+ // simulasi auto nickname (fake API)
+ setTimeout(()=>{
+   nick.innerHTML="Nickname: Player_"+id.slice(-4);
+ },800);
 }
 
 function selectPay(el,metode){
@@ -225,7 +277,10 @@ function order(){
  let server=document.getElementById('serverId').value.trim();
  let nick=document.getElementById('nick').innerText;
 
- if(!currentGame||!selectedItem||!selectedPay||!id){alert('Lengkapi semua data!');return}
+ if(!currentGame||!selectedItem||!selectedPay||!id){
+   alert('Lengkapi semua data!');
+   return;
+ }
 
  let text=encodeURIComponent(
    "ORDER TOP UP\n\nGame: "+currentGame.toUpperCase()+
@@ -238,10 +293,14 @@ function order(){
 
  window.open("https://wa.me/6285126902348?text="+text);
 }
+</script>
 
-// notif
-const nama=["Rizky","Andi","Budi","Siti","Dika","Fajar","Rina","Asep","Putri","Yoga","Ilham","Dewi","Rahmat","Bayu","Nanda","Vina","Agus","Lina","Hendra","Tika"];
+<div class="notif" id="notif"></div>
+
+<script>
+const nama=["Rizky","Andi","Budi","Siti","Dika","Fajar"];
 const produk=["86 Diamond","172 Diamond","70 Diamond","140 Diamond","60 UC"];
+
 function showNotif(){
  let n=nama[Math.floor(Math.random()*nama.length)];
  let p=produk[Math.floor(Math.random()*produk.length)];
@@ -250,16 +309,21 @@ function showNotif(){
  notif.style.display='block';
  setTimeout(()=>{notif.style.display='none'},3000);
 }
+
 setInterval(showNotif,5000);
 
-// timer
+// TIMER PROMO
 let time=300;
-setInterval(()=>{
- let m=Math.floor(time/60);
- let s=time%60;
- document.getElementById('timer').innerText=`Promo berakhir dalam: ${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
- if(time>0) time--;
-},1000);
+function startTimer(){
+ let t=document.getElementById('timer');
+ setInterval(()=>{
+  let m=Math.floor(time/60);
+  let s=time%60;
+  t.innerText=`Promo berakhir dalam: ${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+  if(time>0) time--;
+ },1000);
+}
+startTimer();
 </script>
 
 </body>
