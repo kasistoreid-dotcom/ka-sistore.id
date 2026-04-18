@@ -30,15 +30,7 @@ header {
     border-left: 5px solid #38bdf8;
     padding-left: 10px;
 }
-.game-banner {
-    width: 100%;
-    max-height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-top: 10px;
-	trasform: scale(1.02);
-	ransition: 0.3s;
-}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -88,35 +80,22 @@ button {
 
 <header>TOP UP GAME MURAH</header>
 <p class="info">⚡ Proses 1-5 menit setelah pembayaran</p>
-</header>
-
+</header
 <div class="container">
 
-<label>Pilih Game</label>
-<select id="game">
-<option value="MLBB">Mobile Legends</option>
-<option value="Free Fire">Free Fire</option>
-<option value="PUBG">PUBG Mobile</option>
-</select>
-
-<input type="text" id="id" placeholder="Masukkan ID Game">
-<input type="text" id="server" placeholder="Server (khusus MLBB)">
-<input type="text" id="nick" placeholder="Nickname">
-
-<img class="game-banner" src="https://imgur.com/8Fk6H44">
 <div class="game-title">MLBB</div>
+<div class="grid" id="mlbb"></div>
 
-<img class="game-banner" src="https://imgur.com/kdMEhLi">
 <div class="game-title">FREE FIRE</div>
+<div class="grid" id="ff"></div>
 
-<img class="game-banner" src="https://imgur.com/2vQZdI6">
 <div class="game-title">PUBG</div>
+<div class="grid" id="pubg"></div>
 
 </div>
 
 <div class="order-box">
     <div id="selectedItem">Pilih diamond dulu</div>
-	<div class="grid" id="list"></div>
     <br>
     <button onclick="orderWA()">Order via WhatsApp</button>
 </div>
@@ -174,29 +153,18 @@ function render(id, list) {
     });
 }
 
-let selectedDiamon = "";
-
-function pilihDiamon(nama, harga){
-	selectedDiamon = nama + "(" + harga + ")";
-)
+function selectItem(el, item) {
+    document.querySelectorAll(".card").forEach(c => c.classList.remove("selected"));
+    el.classList.add("selected");
+    selectedText = item[0] + " - Rp " + item[1].toLocaleString();
+    document.getElementById("selectedItem").innerText = selectedText;
+}
 
 function orderWA() {
-let game = document.querySelector("select").value;
-let id = document.querySelectorAll("input")[0].value;
-let server = document.querySelectorAll("input")[1].value;
-let Nickname = document.querySelectorAll("input")[2].value;
-
-    if (selectedDiamon == ""){
+    if (!selectedText) {
         alert("Pilih diamond dulu!");
         return;
     }
-		let pesan = 'hallo admin, saya mau top up:
-	game : ${game}
-	ID: ${id}
-	Server: ${Server}
-	Nickname: ${nickname}
-	Diamond: ${selectedDiamon}
-	
     let nomor = "6285126902348"; // GANTI NOMOR KAMU
     let pesan = encodeURIComponent("Halo, saya mau order:\n" + selectedText);
     window.open(`https://wa.me/${nomor}?text=${pesan}`);
