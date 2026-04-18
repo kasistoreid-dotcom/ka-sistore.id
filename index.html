@@ -30,7 +30,15 @@ header {
     border-left: 5px solid #38bdf8;
     padding-left: 10px;
 }
-
+.game-banner {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 10px;
+	trasform: scale(1.02);
+	ransition: 0.3s;
+}
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -95,12 +103,15 @@ button {
 <input type="text" id="server" placeholder="Server (khusus MLBB)">
 <input type="text" id="nick" placeholder="Nickname">
 
+<img class="game-banner" src="https://imgur.com/8Fk6H44">
 <div class="game-title">MLBB</div>
 <div class="grid" id="mlbb"></div>
 
+<img class="game-banner" src="https://imgur.com/kdMEhLi">
 <div class="game-title">FREE FIRE</div>
 <div class="grid" id="ff"></div>
 
+<img class="game-banner" src="https://imgur.com/2vQZdI6">
 <div class="game-title">PUBG</div>
 <div class="grid" id="pubg"></div>
 
