@@ -552,32 +552,65 @@ setInterval(()=>{
  if(time>0) time--;
 },1000);
 
-function kirimWA(){
- let id=document.getElementById('userId').value.trim();
- let server=document.getElementById('serverId').value.trim();
- let file = document.getElementById('buktiTf').files[0];
+async function kirimWA(){
+  let id = document.getElementById('userId').value.trim();
+  let server = document.getElementById('serverId').value.trim();
 
- if(!file){
-   alert("Upload bukti transfer dulu!");
-   return;
- }
+  let file = document.getElementById('buktiTf').files[0];
+  if(!file){
+    alert("Upload bukti transfer dulu!");
+    return;
+  }
 
- let text=encodeURIComponent(
-   "ORDER TOP UP\n\n"+
-   "Invoice: "+invoiceID+
-   "\nGame: "+currentGame.toUpperCase()+
-   "\nID: "+id+
-   "\nServer: "+server+
-   "\nItem: "+selectedItem+
-   "\nPembayaran: "+selectedPay+
-   "\n\n(Bukti transfer menyusul)"
- );
+  // upload ke cloudinary
+  let url = await uploadBukti();
 
- window.open("https://wa.me/6285126902348?text="+text);
+  // simpan bukti ke localStorage
+  localStorage.setItem("bukti_"+invoiceID, url);
+
+  let text = encodeURIComponent(
+    "ORDER TOP UP\n\n"+
+    "Invoice: "+invoiceID+
+    "\nGame: "+currentGame.toUpperCase()+
+    "\nID: "+id+
+    "\nServer: "+server+
+    "\nItem: "+selectedItem+
+    "\nPembayaran: "+selectedPay+
+    "\nBukti: "+url
+  );
+
+  window.open("https://wa.me/6285126902348?text="+text);
+
+  setTimeout(()=>{
+    window.location.href="sukses.html";
+  },1000);
+}
 
  setTimeout(()=>{
    window.location.href="sukses.html";
  },1000);
+}
+
+async function uploadBukti(){
+  let file = document.getElementById('buktiTf').files[0];
+
+  if(!file){
+    alert("Upload bukti dulu!");
+    return;
+  }
+
+  let formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "kasistore_upload");
+
+  let res = await fetch("https://api.cloudinary.com/v1_1/dn7tzkohc/image/upload", {
+    method: "POST",
+    body: formData
+  });
+
+  let data = await res.json();
+
+  return data.secure_url; // link gambar
 }
 </script>
 
