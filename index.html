@@ -304,6 +304,13 @@ letter-spacing:1px;
 🚀 ORDER SEKARANG
 </button>
 
+<button onclick="window.location.href='riwayat.html'" style="
+	background:#111827;
+	margin-top:px;
+	font-size:13px;
+">
+📜 Lihat Riwayat Order
+</button>
 </div>
 
 <div class="section testimoni">
@@ -398,7 +405,7 @@ const data={
  ]
 };
 
-let currentGame="";let selectedItem="";let selectedPay="";
+let currentGame="";let selectedItem="";let selectedPay="";let invoiceID = "";
 
 function selectGame(game,el){
  currentGame=game;
@@ -452,17 +459,39 @@ function order(){
    return;
  }
 
+function generateInvoice(){
+ let random = Math.floor(100000 + Math.random() * 900000);
+ return "INV-" + currentGame.toUpperCase() + "-" + random;
+}
+
 // 🔥 loading dulu
  document.getElementById("detailOrder").innerHTML = "⏳ Memproses pesanan...";
  
  // tampilkan popup setelah delay
  setTimeout(()=>{
 
- document.getElementById("detailOrder").innerHTML =
-   "Game: "+currentGame.toUpperCase()+"<br>"+
-   "ID: "+id+" ("+server+")<br>"+
-   "Item: "+selectedItem+"<br>"+
-   "Metode: "+selectedPay;
+ invoiceID = generateInvoice();
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+orders.push({
+  invoice: invoiceID,
+  game: currentGame.toUpperCase(),
+  item: selectedItem,
+  date: new Date().toLocaleString()
+});
+
+localStorage.setItem("orders", JSON.stringify(orders));
+
+document.getElementById("detailOrder").innerHTML =
+  "<b>Invoice:</b> "+invoiceID+"<br><br>"+
+  "Game: "+currentGame.toUpperCase()+"<br>"+
+  "ID: "+id+" ("+server+")<br>"+
+  "Item: "+selectedItem+"<br>"+
+  "Metode: "+selectedPay;
+localStorage.setItem("invoice", invoiceID);
+localStorage.setItem("game", currentGame.toUpperCase());
+localStorage.setItem("item", selectedItem);
 
  if(selectedPay==="BRI"){
    document.getElementById("rekText").innerText="707601017554537";
@@ -493,13 +522,16 @@ function kirimWA(){
  let id=document.getElementById('userId').value.trim();
  let server=document.getElementById('serverId').value.trim();
 
- let text=encodeURIComponent(
-   "ORDER TOP UP\n\nGame: "+currentGame.toUpperCase()+
-   "\nID: "+id+
-   "\nServer: "+server+
-   "\nItem: "+selectedItem+
-   "\nPembayaran: "+selectedPay
- );
+let text=encodeURIComponent(
+  "ORDER TOP UP\n\n"+
+  "Invoice: "+invoiceID+
+  "\nGame: "+currentGame.toUpperCase()+
+  "\nID: "+id+
+  "\nServer: "+server+
+  "\nItem: "+selectedItem+
+  "\nPembayaran: "+selectedPay+
+  "\n\n(Bukti transfer menyusul)"
+);
 
  window.open("https://wa.me/6285126902348?text="+text);
 }

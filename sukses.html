@@ -67,9 +67,41 @@ button{
 <div class="box">
   <div class="check">✔️</div>
   <h2>Pembayaran Diproses</h2>
-  <p>Terima kasih! Bukti transfer kamu sudah dikirim.<br>
-  Admin akan segera memproses pesanan kamu.</p>
+ <div id="dataOrder" style="margin-top:10px;font-size:14px;color:#cbd5f5"></div>
 
+<div id="statusOrder" style="
+  margin-top:15px;
+  padding:10px;
+  border-radius:10px;
+  background:#111827;
+  color:#fbbf24;
+  font-weight:bold;
+">
+⏳ Menunggu Pembayaran...
+</div>
+
+<script>
+<script>
+// ambil data
+let invoice = localStorage.getItem("invoice");
+let game = localStorage.getItem("game");
+let item = localStorage.getItem("item");
+
+// tampilkan data
+document.getElementById("dataOrder").innerHTML =
+  "<b>Invoice:</b> "+invoice+"<br>"+
+  "Game: "+game+"<br>"+
+  "Item: "+item;
+
+// 🔥 status otomatis berubah
+setTimeout(()=>{
+  let status = document.getElementById("statusOrder");
+  status.innerHTML = "✅ Pembayaran Berhasil";
+  status.style.color = "#22c55e";
+  status.style.boxShadow = "0 0 10px #22c55e";
+},4000); // 4 detik
+</script>
+</script>
   <button onclick="kembali()">Kembali ke Beranda</button>
 </div>
 

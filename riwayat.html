@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riwayat Order</title>
+
+<style>
+body{
+  font-family:sans-serif;
+  background:#060818;
+  color:#fff;
+  margin:0;
+  padding:20px;
+}
+
+h2{
+  text-align:center;
+  color:#c084fc;
+}
+
+.box{
+  background:#111827;
+  padding:12px;
+  border-radius:10px;
+  margin-bottom:10px;
+  font-size:14px;
+}
+
+button{
+  margin-top:15px;
+  padding:12px;
+  width:100%;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(90deg,#9333ea,#ec4899);
+  color:#fff;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<h2>📜 Riwayat Order</h2>
+<div id="listOrder"></div>
+
+<button onclick="hapus()">Hapus Riwayat</button>
+
+<script>
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let container = document.getElementById("listOrder");
+
+if(orders.length === 0){
+  container.innerHTML = "Belum ada order.";
+}else{
+  orders.reverse().forEach(o=>{
+    container.innerHTML += `
+      <div class="box">
+        <b>${o.invoice}</b><br>
+        Game: ${o.game}<br>
+        Item: ${o.item}<br>
+        <small>${o.date}</small>
+      </div>
+    `;
+  });
+}
+
+function hapus(){
+  localStorage.removeItem("orders");
+  location.reload();
+}
+</script>
+
+</body>
+</html>
