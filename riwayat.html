@@ -55,16 +55,21 @@ let container = document.getElementById("listOrder");
 if(orders.length === 0){
   container.innerHTML = "Belum ada order.";
 }else{
-  orders.reverse().forEach(o=>{
-    container.innerHTML += `
-      <div class="box">
-        <b>${o.invoice}</b><br>
-        Game: ${o.game}<br>
-        Item: ${o.item}<br>
-        <small>${o.date}</small>
-      </div>
-    `;
-  });
+ orders.reverse().forEach(o=>{
+
+  let warna = o.status === "sukses" ? "#22c55e" : "#fbbf24";
+  let teks = o.status === "sukses" ? "✅ Sukses" : "⏳ Pending";
+
+  container.innerHTML += `
+    <div class="box">
+      <b>${o.invoice}</b><br>
+      Game: ${o.game}<br>
+      Item: ${o.item}<br>
+      <span style="color:${warna};font-weight:bold">${teks}</span><br>
+      <small>${o.date}</small>
+    </div>
+  `;
+});
 }
 
 function hapus(){

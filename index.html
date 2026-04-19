@@ -479,6 +479,15 @@ orders.push({
   game: currentGame.toUpperCase(),
   item: selectedItem,
   date: new Date().toLocaleString()
+ setTimeout(()=>{
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+  let index = orders.findIndex(o => o.invoice === invoiceID);
+  if(index !== -1){
+    orders[index].status = "sukses";
+    localStorage.setItem("orders", JSON.stringify(orders));
+  }
+},5000); // berubah setelah 5 detik
 });
 
 localStorage.setItem("orders", JSON.stringify(orders));
