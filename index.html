@@ -111,9 +111,20 @@ input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #1
 .card.selected{
   background:linear-gradient(145deg,#9333ea,#ec4899);
   color:#fff;
-  box-shadow:0 0 15px #ec4899;
+  box-shadow:0 0 20px #ec4899; 0 0 40px rgba(236,72,153, .5);
+  transform:scale(1.05);
 }
 
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:scale(0.9);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
 .badge{position:absolute;top:5px;right:5px;font-size:10px;padding:3px 6px;border-radius:6px;background:#22c55e}
 .badge-hot{background:#ef4444}
 .badge-promo{background:#f59e0b}
@@ -214,6 +225,7 @@ h3{margin-top:18px;margin-bottom:8px;color:#c4b5fd}
       0 0 30px #c084fc,
       0 0 40px #ec4899;
   }
+}
 body::before{
   content:"";
   position:fixed;
@@ -272,11 +284,25 @@ body::after{
 
 <h3>Pembayaran</h3>
 <div class="pay" onclick="selectPay(this,'DANA')">DANA</div>
-<div class="pay" onclick="selectPay(this,'OVO')">OVO</div>
-<div class="pay" onclick="selectPay(this,'QRIS')">QRIS</div>
+<div class="pay" onclick="selectPay(this,'BRI')">BRI</div>
+<div id="rekeningInfo" style="
+	margin-top:10px;
+	font-size:13px;
+	color:#cbd5f5;
+	background:#111827;
+	padding:10px;
+	border-radius:8px;
+"></div>
 
-<div class="timer" id="timer">Promo berakhir dalam: 05:00</div>
-<button onclick="order()">ORDER SEKARANG</button>
+<div class="timer" id="timer">Promo berakhir dalam: 10:00</div>
+<button onclick="order()" style="
+background:linear-gradient(90deg,#9333ea,#ec4899);
+box-shadow:0 0 20px rgba(236,72,153,.6);
+font-size:16px;
+letter-spacing:1px;
+">
+🚀 ORDER SEKARANG
+</button>
 
 </div>
 
@@ -405,13 +431,67 @@ function selectPay(el,metode){
  document.querySelectorAll('.pay').forEach(p=>p.classList.remove('selected'));
  el.classList.add('selected');
  selectedPay=metode;
-}
+ 
+ let info = "";
 
+ if(metode === "DANA"){
+   info = "DANA: 082269307875 a.n SISKA ARSINA";
+}
+else if(metode === "BRI"){
+   info = "BRI: 707601017554537 a.n SISKA ARSINA";
+ }
+
+ document.getElementById("rekeningInfo").innerText = info;
+}
 function order(){
  let id=document.getElementById('userId').value.trim();
  let server=document.getElementById('serverId').value.trim();
 
- if(!currentGame||!selectedItem||!selectedPay||!id){alert('Lengkapi semua data!');return}
+ if(!currentGame||!selectedItem||!selectedPay||!id){
+   alert('Lengkapi semua data!');
+   return;
+ }
+
+// 🔥 loading dulu
+ document.getElementById("detailOrder").innerHTML = "⏳ Memproses pesanan...";
+ 
+ // tampilkan popup setelah delay
+ setTimeout(()=>{
+
+ document.getElementById("detailOrder").innerHTML =
+   "Game: "+currentGame.toUpperCase()+"<br>"+
+   "ID: "+id+" ("+server+")<br>"+
+   "Item: "+selectedItem+"<br>"+
+   "Metode: "+selectedPay;
+
+ if(selectedPay==="BRI"){
+   document.getElementById("rekText").innerText="707601017554537";
+   document.getElementById("rekNama").innerText="BRI a.n SISKA ARSINA";
+ }
+ else if(selectedPay==="DANA"){
+   document.getElementById("rekText").innerText="082269307875";
+   document.getElementById("rekNama").innerText="DANA a.n SISKA ARSINA";
+ }
+
+ document.getElementById("popupBayar").style.display="flex";
+ 
+ },1000);
+}
+
+// popup functions
+function tutupPopup(){
+ document.getElementById("popupBayar").style.display="none";
+}
+
+function copyRek(){
+ let rek = document.getElementById("rekText").innerText;
+ navigator.clipboard.writeText(rek);
+ document.getElementById("rekNama").innerText = "✔️ Berhasil disalin";
+}
+
+function kirimWA(){
+ let id=document.getElementById('userId').value.trim();
+ let server=document.getElementById('serverId').value.trim();
 
  let text=encodeURIComponent(
    "ORDER TOP UP\n\nGame: "+currentGame.toUpperCase()+
@@ -446,6 +526,33 @@ setInterval(()=>{
  if(time>0) time--;
 },1000);
 </script>
+
+<div id="popupBayar" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); z-index:999; justify-content:center; align-items:center;">
+  
+  <div style="background:#020617; padding:22px; border-radius:18px; width:90%; max-width:360px; box-shadow:0 0 40px rgba(147,51,234,.6); animation:fadeIn .3s ease">
+
+    <h3 style="color:#c084fc;text-align:center;margin-bottom:10px">💳 Pembayaran</h3>
+
+    <div id="detailOrder" style="font-size:13px; color:#cbd5f5; background:#111827; padding:10px; border-radius:10px;"></div>
+
+    <!-- REKENING -->
+    <div style="margin-top:12px;background:#0f172a;padding:12px;border-radius:12px;text-align:center">
+      <div id="rekText" style="font-size:18px;font-weight:bold;letter-spacing:1px"></div>
+      <div id="rekNama" style="font-size:12px;color:#9ca3af;margin-top:4px"></div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div style="margin-top:12px">
+      <input type="file" id="buktiTf" accept="image/*" style="width:100%;padding:8px;border-radius:8px;background:#020617;border:1px solid #1f2937;color:#fff">
+    </div>
+
+    <!-- BUTTON -->
+    <button onclick="copyRek()" style="margin-top:10px;background:#22c55e">📋 Salin Rekening</button>
+    <button onclick="kirimWA()" style="margin-top:8px">Kirim Bukti & Chat Admin</button>
+    <button onclick="tutupPopup()" style="margin-top:8px;background:#ef4444">Tutup</button>
+
+  </div>
+</div>
 
 </body>
 </html>
