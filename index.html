@@ -525,6 +525,33 @@ setInterval(()=>{
  document.getElementById('timer').innerText=`Promo berakhir dalam: ${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
  if(time>0) time--;
 },1000);
+
+function kirimWA(){
+ let id=document.getElementById('userId').value.trim();
+ let server=document.getElementById('serverId').value.trim();
+ let file = document.getElementById('buktiTf').files[0];
+
+ if(!file){
+   alert("Upload bukti transfer dulu!");
+   return;
+ }
+
+ let text=encodeURIComponent(
+   "ORDER TOP UP\n\nGame: "+currentGame.toUpperCase()+
+   "\nID: "+id+
+   "\nServer: "+server+
+   "\nItem: "+selectedItem+
+   "\nPembayaran: "+selectedPay+
+   "\n\n(Bukti transfer menyusul)"
+ );
+
+ window.open("https://wa.me/6285126902348?text="+text);
+
+ // 🔥 redirect ke halaman sukses
+ setTimeout(()=>{
+   window.location.href="sukses.html";
+ },1000);
+}
 </script>
 
 <div id="popupBayar" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); z-index:999; justify-content:center; align-items:center;">
