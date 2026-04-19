@@ -306,7 +306,7 @@ letter-spacing:1px;
 
 <button onclick="window.location.href='riwayat.html'" style="
 	background:#111827;
-	margin-top:px;
+	margin-top:10px;
 	font-size:13px;
 ">
 📜 Lihat Riwayat Order
@@ -465,7 +465,10 @@ function generateInvoice(){
 }
 
 // 🔥 loading dulu
- document.getElementById("detailOrder").innerHTML = "⏳ Memproses pesanan...";
+ let detail = document.getElementById("detailOrder");
+if(detail){
+  detail.innerHTML = "⏳ Memproses pesanan...";
+}
  
  // tampilkan popup setelah delay
  setTimeout(()=>{
@@ -562,10 +565,8 @@ async function kirimWA(){
     return;
   }
 
-  // upload ke cloudinary
   let url = await uploadBukti();
 
-  // simpan bukti ke localStorage
   localStorage.setItem("bukti_"+invoiceID, url);
 
   let text = encodeURIComponent(
@@ -586,10 +587,6 @@ async function kirimWA(){
   },1000);
 }
 
- setTimeout(()=>{
-   window.location.href="sukses.html";
- },1000);
-}
 
 async function uploadBukti(){
   let file = document.getElementById('buktiTf').files[0];
