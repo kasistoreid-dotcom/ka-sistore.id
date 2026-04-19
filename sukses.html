@@ -59,6 +59,11 @@ button{
   from{transform:scale(0);}
   to{transform:scale(1);}
 }
+
+#statusOrder.success{
+  transform: scale(1.05);
+}
+
 </style>
 </head>
 
@@ -81,11 +86,10 @@ button{
 </div>
 
 <script>
-<script>
 // ambil data
-let invoice = localStorage.getItem("invoice");
-let game = localStorage.getItem("game");
-let item = localStorage.getItem("item");
+let invoice = localStorage.getItem("invoice") || "-";
+let game = localStorage.getItem("game") || "-";
+let item = localStorage.getItem("item") || "-";
 
 // tampilkan data
 document.getElementById("dataOrder").innerHTML =
@@ -96,11 +100,15 @@ document.getElementById("dataOrder").innerHTML =
 // 🔥 status otomatis berubah
 setTimeout(()=>{
   let status = document.getElementById("statusOrder");
-  status.innerHTML = "✅ Pembayaran Berhasil";
-  status.style.color = "#22c55e";
-  status.style.boxShadow = "0 0 10px #22c55e";
-},4000); // 4 detik
-</script>
+
+  status.innerHTML = "✅ Pembayaran Berhasil 🎉";
+  status.style.color = "#fff";
+  status.style.background = "linear-gradient(90deg,#22c55e,#4ade80)";
+  status.style.boxShadow = "0 0 15px #22c55e";
+ 
+ status.classList.add("success"); // ⬅️ TARUH DI SINI
+ 
+},4000);
 </script>
   <button onclick="kembali()">Kembali ke Beranda</button>
 </div>

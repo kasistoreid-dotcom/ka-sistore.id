@@ -55,10 +55,12 @@ let container = document.getElementById("listOrder");
 if(orders.length === 0){
   container.innerHTML = "Belum ada order.";
 }else{
- orders.reverse().forEach(o=>{
+[...orders].reverse().forEach(o=>{
 
-  let warna = o.status === "sukses" ? "#22c55e" : "#fbbf24";
-  let teks = o.status === "sukses" ? "✅ Sukses" : "⏳ Pending";
+ let status = o.status || "pending";
+
+let warna = status === "sukses" ? "#22c55e" : "#fbbf24";
+let teks = status === "sukses" ? "✅ Sukses" : "⏳ Pending";
 
   container.innerHTML += `
     <div class="box">

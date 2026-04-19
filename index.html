@@ -478,8 +478,12 @@ orders.push({
   invoice: invoiceID,
   game: currentGame.toUpperCase(),
   item: selectedItem,
-  date: new Date().toLocaleString()
- setTimeout(()=>{
+  date: new Date().toLocaleString(),
+  status: "pending"
+});
+
+// update status jadi sukses
+setTimeout(()=>{
   let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
   let index = orders.findIndex(o => o.invoice === invoiceID);
@@ -487,8 +491,7 @@ orders.push({
     orders[index].status = "sukses";
     localStorage.setItem("orders", JSON.stringify(orders));
   }
-},5000); // berubah setelah 5 detik
-});
+},5000);
 
 localStorage.setItem("orders", JSON.stringify(orders));
 
@@ -527,24 +530,6 @@ function copyRek(){
  document.getElementById("rekNama").innerText = "✔️ Berhasil disalin";
 }
 
-function kirimWA(){
- let id=document.getElementById('userId').value.trim();
- let server=document.getElementById('serverId').value.trim();
-
-let text=encodeURIComponent(
-  "ORDER TOP UP\n\n"+
-  "Invoice: "+invoiceID+
-  "\nGame: "+currentGame.toUpperCase()+
-  "\nID: "+id+
-  "\nServer: "+server+
-  "\nItem: "+selectedItem+
-  "\nPembayaran: "+selectedPay+
-  "\n\n(Bukti transfer menyusul)"
-);
-
- window.open("https://wa.me/6285126902348?text="+text);
-}
-
 // notif
 const nama=["Rizky","Andi","Budi","Siti","Dika","Fajar","Rina","Asep","Putri","Yoga","Ilham","Dewi","Rahmat","Bayu","Nanda","Vina","Agus","Lina","Hendra","Tika"];
 const produk=["86 Diamond","172 Diamond","70 Diamond","140 Diamond","60 UC"];
@@ -578,7 +563,9 @@ function kirimWA(){
  }
 
  let text=encodeURIComponent(
-   "ORDER TOP UP\n\nGame: "+currentGame.toUpperCase()+
+   "ORDER TOP UP\n\n"+
+   "Invoice: "+invoiceID+
+   "\nGame: "+currentGame.toUpperCase()+
    "\nID: "+id+
    "\nServer: "+server+
    "\nItem: "+selectedItem+
@@ -588,7 +575,6 @@ function kirimWA(){
 
  window.open("https://wa.me/6285126902348?text="+text);
 
- // 🔥 redirect ke halaman sukses
  setTimeout(()=>{
    window.location.href="sukses.html";
  },1000);
